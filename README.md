@@ -17,20 +17,20 @@ Moving around in the world is naturally a multisensory experience, but today's e
 ## Citing SoundSpaces
 If you use the SoundSpaces platform in your research, please cite the following [paper](https://arxiv.org/pdf/1912.11474.pdf):
 ```
+@inproceedings{chen22soundspaces2,
+  title     =     {SoundSpaces 2.0: A Simulation Platform for Visual-Acoustic Learning},
+  author    =     {Changan Chen and Carl Schissler and Sanchit Garg and Philip Kobernik and Alexander Clegg and Paul Calamia and Dhruv Batra and Philip W Robinson and Kristen Grauman},
+  booktitle =     {NeurIPS 2022 Datasets and Benchmarks Track},
+  year      =     {2022}
+}
 @inproceedings{chen20soundspaces,
   title     =     {SoundSpaces: Audio-Visual Navigaton in 3D Environments},
   author    =     {Changan Chen and Unnat Jain and Carl Schissler and Sebastia Vicenc Amengual Gari and Ziad Al-Halah and Vamsi Krishna Ithapu and Philip Robinson and Kristen Grauman},
   booktitle =     {ECCV},
   year      =     {2020}
 }
-
-@article{chen22soundspaces2,
-  title     =     {SoundSpaces 2.0: A Simulation Platform for Visual-Acoustic Learning},
-  author    =     {Changan Chen and Carl Schissler and Sanchit Garg and Philip Kobernik and Alexander Clegg and Paul Calamia and Dhruv Batra and Philip W Robinson and Kristen Grauman},
-  journal   =     {arXiv},
-  year      =     {2022}
-}
 ```
+If you use any of the 3D scene assets (Matterport3D, Replica, HM3D, Gibson, etc.), please make sure you cite these papers as well!
 
 ## Installation 
 1. Install [habitat-lab v0.2.1](https://github.com/facebookresearch/habitat-lab) and [habitat-sim from this commit](https://github.com/facebookresearch/habitat-sim/tree/80f8e31140eaf50fe6c5ab488525ae1bdf250bd9)
@@ -40,6 +40,7 @@ pip install -e .
 ```
 3. To use SoundSpaces 1.0, follow instructions on the [dataset](soundspaces/README.md) page to download the rendered audio data and datasets.
 4. ***[New]*** To use SoundSpaces 2.0, add ```--audio``` flag while [building Habitat-Sim from the source](https://github.com/facebookresearch/habitat-sim/blob/80f8e31140eaf50fe6c5ab488525ae1bdf250bd9/BUILD_FROM_SOURCE.md).
+Use this [Habitat-Sim](https://github.com/facebookresearch/habitat-sim/tree/RLRAudioPropagationUpdate) branch for the latest features. 
 
 ## Usage
 This repo renders audio-visual observations with high acoustic and spatial correspondence. 
@@ -47,7 +48,7 @@ It supports various visual-acoustic learning tasks, including audio-visual embod
 In this repo, we provide code for training and evaluating audio-visual navigation agents. 
 For other downstream tasks, please check out each paper's respective repo, 
 e.g., [visual acoustic matching](https://github.com/facebookresearch/visual-acoustic-matching) 
-and [audio-visual dereverberation](https://github.com/facebookresearch/learning-audio-visual-dereverberation)
+and [audio-visual dereverberation](https://github.com/facebookresearch/learning-audio-visual-dereverberation).
 
 Below we show some example commands for training and evaluating AudioGoal with depth sensor on Replica. 
 1. Training
@@ -86,9 +87,9 @@ Note that we do not open source the rendering code at this time.
 SoundSpaces 2.0 is a fast, continuous, configurable and generalizable audio-visual simulation platform that allows
 users to render sounds for arbitrary spaces and environments. 
 As a result of rendering accuracy improvements, the rendered IRs are different from SoundSpaces 1.0.
+Check out example jupyter notebook for a quick tutorial.
 
 ### Some common issues
-* To render the monaural audio, set the microphone type to Ambisonics and channel size to 1 for now.
 * If you run into [invalid pointer issues](https://github.com/facebookresearch/habitat-sim/issues/1747), import quaternion before habitat_sim as a workaround.
 * See this [issue](https://github.com/facebookresearch/rlr-audio-propagation/issues/9) for solutions to GLIBC version issues
 
